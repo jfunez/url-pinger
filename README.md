@@ -23,3 +23,14 @@ Sites.txt Format
     protocol://url2 user:password
 
 See https://raw.github.com/globocom/url-pinger/master/sites.txt
+
+
+Enviroment Variables:
+---------------------
+
+    SITES_TXT by default = sites.txt
+    REQUEST_TIMEOUT by default = 1
+    REFRESH_TIMEOUT by default = 60
+    HOST by default = localhost
+    PORT by default = 5000
+    DEBUG by default = true
