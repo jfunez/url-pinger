@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% block page_title %} home {% endblock %}
 {% block content %}
 
     <ul data-role="listview" data-inset="true" data-filter="true" data-autodividers="true">
@@ -10,6 +11,7 @@
 	   		</li>
     	{% endfor %}
 	</ul>
-
-	<div class="last-update">Last update: {{ last_update }}</div>
+{% endblock %}
+{% block footer_content %}
+	<h6 class="last-update">Last update: {{ last_update }}</h6>
 {% endblock %}

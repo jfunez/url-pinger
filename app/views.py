@@ -32,7 +32,7 @@ def home():
             result.append((site, "fail", get_host(site)))
         else:
             result.append((site, "ok", get_host(site)))
-    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S %T")
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     result.sort()
     template_vars = dict(
         result=result,
