@@ -26,13 +26,14 @@ def home():
             assert response.status_code == 200
         except (requests.exceptions.Timeout, socket.timeout) as err:
             print("Timeout to read {0} (timeout={1}): {2}".format(site, REQUEST_TIMEOUT, str(err)))
-            result.append((site, "timeout"))
+            result.append((site, "timeout", get_host(site)))
         except (requests.exceptions.RequestException, AssertionError) as err:
             print("Failed to read {0} (timeout={1}): {2}".format(site, REQUEST_TIMEOUT, str(err)))
-            result.append((site, "fail"))
+            result.append((site, "fail", get_host(site)))
         else:
-            result.append((site, "ok"))
-    now = datetime.datetime.now()
+            result.append((site, "ok", get_host(site)))
+    now = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    result.sort()
     template_vars = dict(
         result=result,
         last_update=now,
@@ -44,6 +45,7 @@ def get_lines(file_path):
     with open(file_path) as f:
         return [line.strip() for line in f.readlines() if line.strip()]
 
+
 def extract_site_and_auth(line):
     if ' ' in line:
         site, auth = line.rsplit(' ', 1)
@@ -52,6 +54,9 @@ def extract_site_and_auth(line):
     else:
         return [line, ()]
 
+
+def get_host(url):
+    return url.split("//")[1].split('/')[0]
 
 if __name__ == '__main__':
     app.run(host=HOST, port=PORT, debug=DEBUG)
