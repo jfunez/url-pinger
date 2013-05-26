@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<table>
+    <tr>
+        <td>Site</td>
+        <td>Status</td>
+    </tr>
+    {% for site, status in result %}
+        <tr>
+            <td><a href="{{ site }}">{{ site }}</a></td>
+            <td class="status {{ status }}"></td>
+        </tr>
+    {% endfor %}
+</table>
+<div class="last-update">Last update: {{ last_update }}</div>
+{% endblock %}

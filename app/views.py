@@ -2,17 +2,16 @@ import os
 import datetime
 import socket
 import requests
-from flask import Flask, render_template
+from flask import render_template
+from app import app
 
 
-SITES_TXT = os.getenv("SITES_TXT", "sites.txt")
+SITES_TXT = os.getenv("SITES_TXT", "../sites.txt")
 REQUEST_TIMEOUT = float(os.getenv("REQUEST_TIMEOUT", "1"))
 REFRESH_TIMEOUT = float(os.getenv("REFRESH_TIMEOUT", "60"))
 HOST = os.getenv("HOST", "localhost")
 PORT = int(os.getenv("PORT", "5000"))
 DEBUG = os.getenv("DEBUG", "true") == "true"
-
-app = Flask(__name__)
 
 
 @app.route('/')
@@ -38,7 +37,7 @@ def home():
         result=result,
         last_update=now,
         refresh_timeout=REFRESH_TIMEOUT)
-    return render_template('pinger.html', **template_vars)
+    return render_template('index.html', **template_vars)
 
 
 def get_lines(file_path):
@@ -56,5 +55,4 @@ def extract_site_and_auth(line):
 
 if __name__ == '__main__':
     app.run(host=HOST, port=PORT, debug=DEBUG)
-
 
