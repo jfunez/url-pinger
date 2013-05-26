@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<table>
-    <tr>
-        <td>Site</td>
-        <td>Status</td>
-    </tr>
-    {% for site, status in result %}
-        <tr>
-            <td><a href="{{ site }}">{{ site }}</a></td>
-            <td class="status {{ status }}"></td>
-        </tr>
-    {% endfor %}
-</table>
-<div class="last-update">Last update: {{ last_update }}</div>
+
+    <ul data-role="listview" data-inset="true" data-filter="true" data-autodividers="true">
+
+    	{% for site, status, host in result %}
+	   		<li>
+	   			<a href="{{ site }}"><span class="host">{{ host }}</span> - {{ site }}</a>
+	   			<span class="ui-li-count {{ status }}">{{ status }}</span>
+	   		</li>
+    	{% endfor %}
+	</ul>
+
+	<div class="last-update">Last update: {{ last_update }}</div>
 {% endblock %}
