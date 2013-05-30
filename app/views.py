@@ -1,12 +1,13 @@
 import os
+from os.path import abspath, dirname
 import datetime
 import socket
 import requests
 from flask import render_template
 from app import app
 
-
-SITES_TXT = os.getenv("SITES_TXT", "../sites.txt")
+DEFAULT_SITES_TXT_PATH = abspath(abspath(__file__ ) + "/../../sites.txt")
+SITES_TXT = os.getenv("SITES_TXT", DEFAULT_SITES_TXT_PATH)
 REQUEST_TIMEOUT = float(os.getenv("REQUEST_TIMEOUT", "1"))
 REFRESH_TIMEOUT = float(os.getenv("REFRESH_TIMEOUT", "60"))
 HOST = os.getenv("HOST", "localhost")
