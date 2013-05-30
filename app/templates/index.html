@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block page_title %} home {% endblock %}
+{% block content %}
+
+    <ul data-role="listview" data-inset="true" data-filter="true" data-autodividers="true">
+
+    	{% for site, status, host in result %}
+	   		<li>
+	   			<a href="{{ site }}"><span class="host">{{ host }}</span> - {{ site }}</a>
+	   			<span class="ui-li-count {{ status }}">{{ status }}</span>
+	   		</li>
+    	{% endfor %}
+	</ul>
+{% endblock %}
+{% block footer_content %}
+	<h6 class="last-update">Last update: {{ last_update }}</h6>
+{% endblock %}

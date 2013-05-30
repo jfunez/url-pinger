@@ -12,7 +12,7 @@ How to Use
     $ pip install -r requirements.txt
     $ echo http://www.globo.com > public_sites.txt
     $ export SITES_TXT=public_sites.txt
-    $ python pinger.py &
+    $ python run.py &
     $ open http://localhost:5000
 
 
