@@ -34,3 +34,6 @@ Enviroment Variables:
     HOST by default = localhost
     PORT by default = 5000
     DEBUG by default = true
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/jfunez/url-pinger/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
